@@ -1,7 +1,10 @@
 import React from 'react';
+import Card from '../Components/CardComponent';
 import styled from 'styled-components';
+import axios from 'axios';
 
-const Container = styled.div`
+const Container = styled.div
+`
     display:flex;
     justify-content:flex-start;
     width:75%;
@@ -10,40 +13,66 @@ const Container = styled.div`
     padding-right:50px;
 `;
 
-const TitleContainer = styled.div`
+const TitleContainer = styled.div
+`
     display:flex;
     justify-content: flex-start;
     width: 100%;
 `
-const Title = styled.h2`
-`;
 
-const NotesContainer = styled.section`
+const NotesContainer = styled.section
+`
     display:flex;
+    justify-content: center;
     flex-wrap:wrap;
+    padding-top: 20px;
     width: 100%;
     border: 1px solid black;
     padding-left: 10px;
 `;
 
-const Note = styled.div`
+const Note = styled.div
+`
     border:1px solid red;
 `
-const MainContent = () => {
-    return(
-        <Container>
-            <TitleContainer>
-                <Title>Your Notes:</Title>
-            </TitleContainer>
-            <NotesContainer>
-                <Note>
-                    <h3>Note Title</h3>
-                    <div>_____</div>
-                    <p>lorem ipsum bruh</p>
-                </Note>
-            </NotesContainer>
-        </Container>
-    )
+class MainContent extends React.Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            notes: []
+        }
+    }
+
+    componentDidMount(){
+        axios
+        .get('https://fe-notes.herokuapp.com/note/get/all')
+        .then(res => {
+            this.setState({ notes: res.data})
+        })
+        .catch(err => console.log(err))
+    }
+
+    render(){
+        return(
+
+            <Container>
+
+                <TitleContainer>
+                    <Title>Your Notes:</Title>
+                </TitleContainer>
+
+                <NotesContainer>
+                    {this.state.notes.map(note => {
+                        return(
+                            <Card note={note}/>
+                        )
+                    })}
+                </NotesContainer>
+                
+            </Container>
+
+        )
+    }
 }
 
 export default MainContent; 

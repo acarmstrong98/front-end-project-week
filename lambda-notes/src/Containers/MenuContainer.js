@@ -1,9 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom'
+import axios from 'axios';
 
 const Container = styled.div`
     display:flex;
-    flex-direction:column
+    flex-direction:column;
     flex-wrap:wrap;
     width: 25%;
     border:1px solid red;
@@ -37,8 +39,15 @@ const MenuContainer = () => {
                 <Title>Lambda Notes</Title>
             </TitleContainer>
             <ButtonContainer>
-                <Button>View Your Notes</Button>
-                <Button>+ Create New Note</Button>
+                
+                <Link to={'/'}>
+                    <button>View Your Notes</button>
+                </Link>
+
+                <Link to={'/create-new'}>
+                    <button>+ Create New Note</button>
+                </Link>
+
             </ButtonContainer>
         </Container>
     )
