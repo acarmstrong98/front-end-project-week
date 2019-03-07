@@ -1,49 +1,93 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const CardContainer = styled.div
-`
+
+const CardContainer = styled.div`
     display:flex;
     justify-content:center;
     flex-wrap:wrap;
-    width: 25%;
-    margin-right:20px;
-    margin-bottom:20px;
-    border: 2px solid grey;
-    overflow: auto;
+    max-width: 50%;
+    min-width:50%;
+    min-height:200px;
+    max-height:200px;
+    background:#ffffff;
+    border: 1px solid grey;
+    padding:5px;
 `;
 
-const TitleContainer = styled.div
-`
+const CardContainerNoteView = styled.div`
     display:flex;
     justify-content:center;
+    flex-wrap:wrap;
+    position:relative;
+    top:-300px;
+    width: 75%;
+    margin-top:-100px;
+    padding:20px;
+`;
+
+const TitleContainerNoteView = styled.div`
+    display:flex;
+    justify-content:flex-start;
     width:100%;
 `;
 
-const LineThrough = styled.div
-`
-    display:flex;
-    border-bottom:2px solid black;
-`
-const BodyContainer = styled.div
-`
+const TitleContainer = styled.div`
     display:flex;
     justify-content:center;
+    width:100%;
+    word-break:break-word;
+`;
+
+const Title = styled.h2`
+    display:flex;
+    font-size:1em;
 `
 
-const Card = (props) => {
-    return(
+const BodyContainer = styled.div`
+    display:flex;
+    justify-content:center;
+    word-break:break-word;
+`;
 
+const Body = styled.p`
+    display:flex;
+`
+
+const BodyContainerNoteView = styled.div`
+    display:flex;
+    justify-content:flex-start;
+    width:100%;
+    position:relative;
+    top:-150px;
+`;
+
+const Card = (props) => {
+    if(props.noteView){
+        return(
+            <CardContainerNoteView>
+
+                <TitleContainerNoteView>
+                    <h2>{props.note.title}</h2>
+                </TitleContainerNoteView>
+
+                <BodyContainerNoteView>
+                    <p>{props.note.textBody}</p>
+                </BodyContainerNoteView>
+
+            </CardContainerNoteView>
+        )
+    }
+
+    return(
         <CardContainer>
 
             <TitleContainer>
-               <h2>{props.note.title}</h2>
+               <Title>{props.note.title}</Title>
             </TitleContainer>
 
-            <LineThrough></LineThrough>
-
             <BodyContainer>
-                <p>{props.note.textBody}</p>
+                <Body>{props.note.textBody}</Body>
             </BodyContainer>
 
         </CardContainer>
@@ -51,4 +95,4 @@ const Card = (props) => {
     )
 }
 
-export default Card;
+export default Card; 

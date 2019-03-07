@@ -5,12 +5,14 @@ import styled from 'styled-components';
 
 const Container = styled.div`
     display:flex;
+    width:100%;
+    height:100%;
 `
-const NoteContainer = () => {
+const NoteContainer = props => {
     return (
         <Container>
             <MenuContainer/>
-            <MainContent/>
+            <MainContent notes={props.notes}/>
         </Container>
     )
 }

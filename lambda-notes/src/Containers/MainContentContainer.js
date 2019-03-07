@@ -1,78 +1,67 @@
 import React from 'react';
 import Card from '../Components/CardComponent';
 import styled from 'styled-components';
-import axios from 'axios';
+import { Link } from 'react-router-dom';
 
-const Container = styled.div
-`
+const Container = styled.div`
     display:flex;
     justify-content:flex-start;
-    width:75%;
+    width:100%;
     flex-wrap:wrap;
     padding-left:50px;
     padding-right:50px;
+    background:#f2f1f2;
 `;
 
-const TitleContainer = styled.div
-`
+const TitleContainer = styled.div`
     display:flex;
     justify-content: flex-start;
     width: 100%;
+    height:40px;
+    margin-top:0;
+    margin-bottom:0;
 `
-
-const NotesContainer = styled.section
-`
+const Title = styled.h2`
     display:flex;
-    justify-content: center;
+    height:20px;
+`;
+
+const NotesContainer = styled.section`
+    display:flex;
+    justify-content:flex-start;
+    flex-direction: row;
     flex-wrap:wrap;
-    padding-top: 20px;
+    position:relative;
+    top:-400px;
+    padding-top:25px;
     width: 100%;
-    border: 1px solid black;
     padding-left: 10px;
 `;
 
-const Note = styled.div
-`
-    border:1px solid red;
-`
-class MainContent extends React.Component{
-    constructor(props){
-        super(props);
-        this.state = {
-            notes: []
-        }
+const StyledLink = styled(Link)`
+    display:flex;
+    text-decoration:none;
+    color:black;
+    width:30%;
+    height:0px;
+    &:focus, &:hover, &:visited, &:link, &:active {
+        text-decoration: none;
     }
+`;
+const MainContent = props => {
+    return(
+        <Container>
 
-    componentDidMount(){
-        axios
-        .get('https://fe-notes.herokuapp.com/note/get/all')
-        .then(res => {
-            this.setState({ notes: res.data})
-        })
-        .catch(err => console.log(err))
-    }
+            <TitleContainer>
+                <Title>Your Notes:</Title>
+            </TitleContainer>
 
-    render(){
-        return(
+            <NotesContainer>
+                { props.notes ? props.notes.map(note => <StyledLink to={`/note/${note._id}`} key={note._id}><Card key={note._id}note={note}/></StyledLink> ) : (<div>loading</div> )}
+            </NotesContainer>
 
-            <Container>
-
-                <TitleContainer>
-                    <Title>Your Notes:</Title>
-                </TitleContainer>
-
-                <NotesContainer>
-                    {this.state.notes.map(note => {
-                        return(
-                            <Card note={note}/>
-                        )
-                    })}
-                </NotesContainer>
-                
-            </Container>
-
-        )
-    }
+        </Container>
+    )
 }
 
 export default MainContent; 
