@@ -36,14 +36,16 @@ const NoteTitle = styled.input`
 const NoteContent = styled.input`
     display:flex;
     width:90%;
-    height:150px;
+    height:250px;
     margin-bottom:10px;
 `;
+
 const NoteSubmit = styled.input`
     display:flex;
     justify-content:center;
     width:15%;
     height:35px;
+    cursor: pointer;
 `;
 
 const Title = styled.h2`
@@ -82,8 +84,8 @@ class CreateNew extends React.Component{
                 <FormContainter>
                     <Title>Create New Note: </Title>
                     <Form onSubmit={this.addNewNote}>
-                        <NoteTitle type="text" name="title" placeholder="Note Title" onChange={this.handleInput}/>
-                        <NoteContent type="text" name="textBody" placeholder="Note Content" onChange={this.handleInput}/>
+                        <NoteTitle type="text" name="title" placeholder="Note Title..." onChange={this.handleInput}/>
+                        <NoteContent type="text" name="textBody" placeholder="Note Content..." onChange={this.handleInput}/>
                         <NoteSubmit type="submit" value="save" />
                     </Form>
                 </FormContainter>

@@ -25,7 +25,7 @@ const TitleContainer = styled.section`
     justify-content:center;
     height:100px;
     width: 10%;
-    margin-bottom:10px;
+    margin-bottom:40px;
 `
 const Title = styled.h1`
     text-align:justify;
@@ -35,8 +35,7 @@ const Title = styled.h1`
 const Button = styled.div`
     display:flex;
     justify-content:center;
-    min-width:150px;
-    max-width: 150px;
+    width: 150px;
     border:1px solid black;
     margin-bottom:10px;
     padding:5px;

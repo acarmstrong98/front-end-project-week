@@ -6,23 +6,22 @@ const CardContainer = styled.div`
     display:flex;
     justify-content:center;
     flex-wrap:wrap;
-    max-width: 50%;
-    min-width:50%;
-    min-height:200px;
-    max-height:200px;
+    position: relative;
+    top: 400px;
+    width:50%;
+    height:200px;
     background:#ffffff;
     border: 1px solid grey;
     padding:5px;
+    margin: 20px;
 `;
 
 const CardContainerNoteView = styled.div`
     display:flex;
     justify-content:center;
     flex-wrap:wrap;
-    position:relative;
     top:-300px;
     width: 75%;
-    margin-top:-100px;
     padding:20px;
 `;
 
@@ -30,6 +29,8 @@ const TitleContainerNoteView = styled.div`
     display:flex;
     justify-content:flex-start;
     width:100%;
+    position: relative;
+    bottom: 230px;
 `;
 
 const TitleContainer = styled.div`
@@ -58,8 +59,8 @@ const BodyContainerNoteView = styled.div`
     display:flex;
     justify-content:flex-start;
     width:100%;
-    position:relative;
-    top:-150px;
+    position: relative;
+    bottom: 310px;
 `;
 
 const Card = (props) => {
@@ -81,7 +82,7 @@ const Card = (props) => {
 
     return(
         <CardContainer>
-
+            
             <TitleContainer>
                <Title>{props.note.title}</Title>
             </TitleContainer>
@@ -91,7 +92,6 @@ const Card = (props) => {
             </BodyContainer>
 
         </CardContainer>
-
     )
 }
 

@@ -20,6 +20,7 @@ const FormContainter = styled.div`
 
 const Form = styled.form`
     display:flex;
+    justify-content: flex-start;
     flex-wrap:wrap;
     width:100%;
     padding-bottom:450px;
@@ -42,6 +43,7 @@ const NoteSubmit = styled.input`
     justify-content:center;
     width:15%;
     height:35px;
+    cursor: pointer;
 `;
 
 const Title = styled.h2`
@@ -62,8 +64,8 @@ const EditNote = props => {
             <FormContainter>
                 <Title>Edit Note: </Title>
                 <Form onSubmit={EditNotes}>
-                    <NoteTitle type="text" name="title" placeholder="Note Title" onChange={props.handleInput}/>
-                    <NoteContent type="text" name="textBody" placeholder="Note Content" onChange={props.handleInput}/>
+                    <NoteTitle type="text" name="title" placeholder="Note title..." onChange={props.handleInput}/>
+                    <NoteContent type="text" name="textBody" placeholder="Note Content..." onChange={props.handleInput}/>
                     <NoteSubmit type="submit" value="save" />
                 </Form>
             </FormContainter>

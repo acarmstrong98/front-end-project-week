@@ -7,6 +7,7 @@ const Container = styled.div`
     display:flex;
     justify-content:flex-start;
     width:100%;
+    height: 100%;
     flex-wrap:wrap;
     padding-left:50px;
     padding-right:50px;
@@ -35,6 +36,7 @@ const NotesContainer = styled.section`
     top:-400px;
     padding-top:25px;
     width: 100%;
+    height: 100%;
     padding-left: 10px;
 `;
 
@@ -43,7 +45,6 @@ const StyledLink = styled(Link)`
     text-decoration:none;
     color:black;
     width:30%;
-    height:0px;
     &:focus, &:hover, &:visited, &:link, &:active {
         text-decoration: none;
     }

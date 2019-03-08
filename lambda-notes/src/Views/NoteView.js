@@ -33,9 +33,11 @@ const OptionsList = styled.ul`
 
 const Options = styled.li`
     display:flex;
-    margin-left:5px;
+    margin-left:8px;
+    margin-right: 8px;
     height:5px;
     cursor: pointer;
+    text-decoration: underline;
 `;
 
 const StyledLink = styled(Link)`
